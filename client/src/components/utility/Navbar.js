@@ -5,8 +5,7 @@ const Navbar = () => {
     return (
       <nav className='navbar bg-dark'>
         <h1>
-          <Link to='/'>
-            <i className='fas fa-code'></i> Palvelu Tori
+          <Link to='/'>Palvelu Tori
           </Link>
         </h1>
         <ul>
