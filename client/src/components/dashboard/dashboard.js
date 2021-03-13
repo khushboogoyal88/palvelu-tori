@@ -1,11 +1,19 @@
-import React from 'react'
+import React, { useEffect } from 'react';
+import { connect } from 'react-redux';
+import { getCurrentProfile } from '../../actions/profile';
 
-const dashboard = () => {
-    return (
-        <div>
-            Dashboard
-        </div>
-    )
-}
+const Dashboard = ({ getCurrentProfile, auth, profile }) => {
+  useEffect(() => {
+    getCurrentProfile();
+  }, []);
 
-export default dashboard
+  return <div>Dashboard</div>;
+};
+
+
+const mapStateToProps = (state) => ({
+  auth: state.auth,
+  profile: state.profile,
+});
+
+export default connect(mapStateToProps, { getCurrentProfile })(Dashboard);
