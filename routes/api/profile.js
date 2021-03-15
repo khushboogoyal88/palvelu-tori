@@ -158,6 +158,7 @@ router.put(
     auth,
     [
       check('degree', 'Degree is required').not().isEmpty(),
+      check('location', 'Location is required').not().isEmpty(),
       check('description', 'Tell us something about this degree').not().isEmpty(),
     ],
   ],
@@ -169,11 +170,13 @@ router.put(
 
     const {
       degree,
+      location,
       description
     } = req.body;
 
     const newEdu = {
       degree,
+      location,
       description,
     };
 

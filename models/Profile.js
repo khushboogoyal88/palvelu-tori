@@ -20,23 +20,12 @@ const ProfileSchema = new mongoose.Schema({
     type: Number,
     required: true,
   },
-  pastExperience: [
-    {
-      title: {
-        type: String,
-        required: true,
-      },
-      location: {
-        type: String,
-      },
-      description: {
-        type: String,
-      },
-    },
-  ],
   education: [
     {
       degree: {
+        type: String,
+      },
+      location: {
         type: String,
       },
       description: {
