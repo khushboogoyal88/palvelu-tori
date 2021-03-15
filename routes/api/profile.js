@@ -212,4 +212,6 @@ router.delete('/education/:edu_id', auth, async (req, res) => {
     return res.status(500).json({ msg: 'Server error' });
   }
 });
+
+
 module.exports = router;
