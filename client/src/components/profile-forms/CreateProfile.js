@@ -1,7 +1,9 @@
 import React, { Fragment, useState } from 'react';
+import {Link, withRouter} from 'react-router-dom';
 import { connect } from 'react-redux';
+import {createProfile} from '../../actions/profile'
 
-const CreateProfile = (props) => {
+const CreateProfile = ({createProfile, history}) => {
     const [formData, setFormData] = useState({
       price: '',
       location: '',
@@ -26,6 +28,10 @@ const CreateProfile = (props) => {
     const onChange = (e) =>
       setFormData({ ...formData, [e.target.name]: e.target.value });
 
+    const onSumbit =(e)=>{
+      e.preventDefault();
+      createProfile(formData, history)
+    }
     return (
       <Fragment>
         <h1 className='large text-primary'>Create Your Profile</h1>
@@ -34,7 +40,7 @@ const CreateProfile = (props) => {
           profile stand out
         </p>
         <small>* = required field</small>
-        <form className='form'>
+        <form className='form' onSubmit={e=> onSumbit(e)}>
           <div className='form-group'>
             <select
               placeholder='* Skills'
@@ -64,7 +70,7 @@ const CreateProfile = (props) => {
           <div className='form-group'>
             <input
               type='text'
-              placeholder='Price'
+              placeholder='* Price'
               name='price'
               value={price}
               onChange={(e) => onChange(e)}
@@ -75,7 +81,7 @@ const CreateProfile = (props) => {
           <div className='form-group'>
             <input
               type='text'
-              placeholder='Location'
+              placeholder=' * Location'
               name='location'
               value={location}
               onChange={(e) => onChange(e)}
@@ -138,5 +144,7 @@ const CreateProfile = (props) => {
     );
 }
 
-export default CreateProfile
+
+
+export default connect(null, {createProfile})(withRouter(CreateProfile))
 

@@ -35,6 +35,7 @@ router.post(
     [
       check('location', 'Location is required').not().isEmpty(),
       check('skills', 'Skills is required').not().isEmpty(),
+      check('price', 'Price is required').not().isEmpty(),
     ],
   ],
   async (req, res) => {

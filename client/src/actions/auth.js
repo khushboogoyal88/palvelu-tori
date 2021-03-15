@@ -81,8 +81,7 @@ const errors = err.response.data.errors;
 if(errors){
     errors.forEach(error => dispatch(setAlert(err.msg, 'danger')))
 }
-        
-        dispatch({
+dispatch({
             type: LOGIN_FAIL,
         })
     }
