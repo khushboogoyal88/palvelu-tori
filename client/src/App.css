@@ -193,12 +193,15 @@ img {
 
 .btn-success,
 .bg-success,
-.badge-success,
-.alert-success {
+.badge-success{
   background: var(--success-color);
   color: #fff;
 }
 
+.alert-success {
+  color: var(--success-color);
+  font-size: 1.2rem;
+}
 .btn-white,
 .bg-white,
 .badge-white,

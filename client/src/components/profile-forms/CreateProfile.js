@@ -40,7 +40,7 @@ const CreateProfile = ({createProfile, history}) => {
           profile stand out
         </p>
         <small>* = required field</small>
-        <form className='form' onSubmit={e=> onSumbit(e)}>
+        <form className='form' onSubmit={(e) => onSumbit(e)}>
           <div className='form-group'>
             <select
               placeholder='* Skills'
@@ -51,16 +51,16 @@ const CreateProfile = ({createProfile, history}) => {
               <option value='0'>
                 * Select the Service you want to provide.
               </option>
-              <option value='Developer'>Baby sitting</option>
-              <option value='Junior Developer'>Plumbing</option>
-              <option value='Senior Developer'>House Keeping</option>
-              <option value='Manager'>Tutoring</option>
-              <option value='Student or Learning'>Electrical Services</option>
-              <option value='Student or Learning'>Moving and delivery</option>
-              <option value='Instructor'>
+              <option value='Baby sitting'>Baby sitting</option>
+              <option value='Plumbing'>Plumbing</option>
+              <option value='House Keeping'>House Keeping</option>
+              <option value='Tutoring'>Tutoring</option>
+              <option value='Electrical Services'>Electrical Services</option>
+              <option value='Moving and delivery'>Moving and delivery</option>
+              <option value='Personal Care'>
                 Personal Care(like haicut, manicure)
               </option>
-              <option value='Intern'>Catering Services</option>
+              <option value='Catering Services'>Catering Services</option>
               <option value='Other'>Other</option>
             </select>
             <small className='form-text'>
@@ -136,9 +136,9 @@ const CreateProfile = ({createProfile, history}) => {
           )}
 
           <input type='submit' className='btn btn-primary my-1' />
-          <a className='btn btn-light my-1' href='dashboard.html'>
+          <Link className='btn btn-light my-1' to='/dashboard'>
             Go Back
-          </a>
+          </Link>
         </form>
       </Fragment>
     );
