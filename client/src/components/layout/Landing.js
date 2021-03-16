@@ -13,7 +13,7 @@ const Landing = () => {
             Baby-sitting.
           </p>
           <div className='buttons'>
-            <Link to='/' className='btn btn-primary'>
+            <Link to='/profiles' className='btn btn-primary'>
               Buy Services
             </Link>
             <a href='/register' className='btn btn-light'>
