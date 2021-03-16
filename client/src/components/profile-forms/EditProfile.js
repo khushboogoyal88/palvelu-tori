@@ -16,7 +16,7 @@ const EditProfile = ({
     skills: '',
     bio: '',
     phone: '',
-    email: '',
+    email:''
   });
 
   const [displayContactlInputs, toggleContactInputs] = useState(false);

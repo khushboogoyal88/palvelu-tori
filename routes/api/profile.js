@@ -49,8 +49,7 @@ router.post(
       location,
       bio,
       skills,
-      pastExperience,
-      qualification,
+      education,
       phone,
       email,
     } = req.body;
@@ -61,9 +60,7 @@ router.post(
     if (price) profileFields.price = price;
     if (location) profileFields.location = location;
     if (bio) profileFields.bio = bio;
-    if (skills) {
-      profileFields.skills = skills.split(',').map((skill) => skill.trim());
-    }
+    if (skills) profileFields.skills = skills;
 
     // Build social object
     profileFields.info = {};

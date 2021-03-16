@@ -5,6 +5,7 @@ const ProfileItem = ({
   profile: {
     user: { _id, name, avatar },
     price,
+    info,
     location,
     skills,
   },
@@ -13,7 +14,7 @@ const ProfileItem = ({
     <div className='profile bg-light'>
       <img src={avatar} alt='' className='round-img' />
       <div>
-        <h2>{skills}</h2>
+        <h2>{skills}, {location}</h2>
 
         <h3 className='my-1'>{name}</h3>
         <p>{price && <span> {price} €/hour</span>}</p>
@@ -21,18 +22,17 @@ const ProfileItem = ({
           View Profile
         </Link>
       </div>
-      <div>
-        <ul>
-          <li>
-            <i className='fas fa-check' /> {location}
-          </li>
-          <li>
-            <i className='fas fa-phone' /> Phone
-          </li>
-          <li>
-            <i className='fas fa-envelope' /> Email
-          </li>
-        </ul>
+      <div class='icons my-1'>
+        {info && info.phone && (
+          <p>
+            <i class='fas fa-phone fa-2x' /> {info.phone}
+          </p>
+        )}
+        {info && info.email && (
+          <p>
+            <i class='fas fa-envelope fa-2x' /> {info.email}
+          </p>
+        )}
       </div>
     </div>
   );

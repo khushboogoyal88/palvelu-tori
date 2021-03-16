@@ -415,9 +415,6 @@ button {
   grid-area: exp;
 }
 
-.profile-edu {
-  grid-area: edu;
-}
 
 .profile-exp h2,
 .profile-edu h2 {
