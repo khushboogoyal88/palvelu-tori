@@ -32,7 +32,7 @@ const EditProfile = ({
       phone: loading || !profile.info ? '' : profile.info.phone,
       email: loading || !profile.info ? '' : profile.info.email,
     });
-  }, [loading]);
+  }, [loading, getCurrentProfile]);
 
   const { price, location, skills, bio, phone, email } = formData;
 

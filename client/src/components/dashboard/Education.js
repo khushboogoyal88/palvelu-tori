@@ -1,5 +1,4 @@
 import React, { Fragment } from 'react';
-import Moment from 'react-moment';
 import { connect } from 'react-redux';
 import { deleteEducation } from '../../actions/profile';
 
