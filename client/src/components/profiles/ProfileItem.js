@@ -4,8 +4,6 @@ import { Link } from 'react-router-dom';
 const ProfileItem = ({
   profile: {
     user: { _id, name, avatar },
-    status,
-    company,
     price,
     location,
     skills,
@@ -24,7 +22,17 @@ const ProfileItem = ({
         </Link>
       </div>
       <div>
-        <i className='fas fa-check' /> {location}
+        <ul>
+          <li>
+            <i className='fas fa-check' /> {location}
+          </li>
+          <li>
+            <i className='fas fa-phone' /> Phone
+          </li>
+          <li>
+            <i className='fas fa-envelope' /> Email
+          </li>
+        </ul>
       </div>
     </div>
   );
