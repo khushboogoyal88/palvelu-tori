@@ -98,7 +98,13 @@ router.post(
 // @access   Public
 router.get('/', async (req, res) => {
   try {
-    const profiles = await Profile.find().populate('user', ['name', 'avatar']);
+    const keyword = req.query.keyword?{
+      skills:{
+        $regex: req.query.keyword,
+        $options: 'i'
+      }
+    }: {}
+    const profiles = await Profile.find({...keyword}).populate('user', ['name', 'avatar']);
     res.json(profiles);
   } catch (err) {
     console.error(err.message);
@@ -127,13 +133,56 @@ router.get('/user/:user_id', async (req, res) => {
   }
 });
 
+// @route    POST api/profile/user/:user_id/review
+// @desc     Create new Review
+// @access   Private
+router.post('/user/:user_id/reviews',auth, async (req, res) => {
+  try {
+    const { rating, comment } = req.body;
+
+    const profile = await Profile.findOne({
+      user: req.params.user_id,
+    });
+    if (product) {
+      const alreadyReviewed = product.reviews.find(
+        (r) => r.user.toString() === req.user._id.toString()
+      );
+
+      if (alreadyReviewed) {
+        res.status(400).json({ msg: 'Product already reviewed' });
+      }
+
+      const review = {
+        name: req.user.name,
+        rating: Number(rating),
+        comment,
+        user: req.params.user_id,
+      };
+
+      product.reviews.push(review);
+
+      product.numReviews = product.reviews.length;
+
+      product.rating =
+        product.reviews.reduce((acc, item) => item.rating + acc, 0) /
+        product.reviews.length;
+
+      await product.save();
+      res.status(201).json({ message: 'Review added' });
+    } else {
+      res.status(404);
+      throw new Error('Product not found');
+    }
+  } catch (err) {
+    console.error(err.message);
+    res.status(500).send('Server Error');
+  }
+});
 // @route    DELETE api/profile
 // @desc     Delete profile, user & posts
 // @access   Private
 router.delete('/', auth, async (req, res) => {
   try {
-    // @todo - remove users posts
-
     // Remove profile
     await Profile.findOneAndRemove({ user: req.user.id });
     // Remove user

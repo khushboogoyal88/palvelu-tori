@@ -25,12 +25,12 @@ const ProfileItem = ({
       <div class='icons my-1'>
         {info && info.phone && (
           <p>
-            <i class='fas fa-phone fa-2x' /> {info.phone}
+            <i class='fas fa-phone'  /> {info.phone}
           </p>
         )}
         {info && info.email && (
           <p>
-            <i class='fas fa-envelope fa-2x' /> {info.email}
+            <i class='fas fa-envelope ' /> {info.email}
           </p>
         )}
       </div>
