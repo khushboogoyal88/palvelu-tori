@@ -224,6 +224,15 @@ img {
   border-radius: 50%;
 }
 
+.profile-img {
+  height: 250px;
+  width: 220px
+}
+
+.avatar-img {
+  height: 200px;
+  width: 180px
+}
 .line {
   height: 1px;
   background: #ccc;
@@ -500,6 +509,18 @@ button {
   color: #aaa;
   font-size: 0.8rem;
   margin-bottom: 0.5rem;
+}
+
+.grid-container {
+  display: grid;
+  grid-template-columns: auto auto auto;
+  padding: 40px;
+}
+.grid-item {
+  background-color: rgba(255, 255, 255, 0.8);
+  padding: 20px;
+  font-size: 30px;
+  text-align: center;
 }
 
 /* Mobile Styles */

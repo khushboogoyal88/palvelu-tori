@@ -52,12 +52,14 @@ router.post(
       education,
       phone,
       email,
+      image
     } = req.body;
 
     // Build profile object
     const profileFields = {};
     profileFields.user = req.user.id;
     if (price) profileFields.price = price;
+    if (image) profileFields.image = image;
     if (location) profileFields.location = location;
     if (bio) profileFields.bio = bio;
     if (skills) profileFields.skills = skills;

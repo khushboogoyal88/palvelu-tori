@@ -7,11 +7,12 @@ const ProfileTop = ({
     info,
     price,
     user: { name, avatar },
+    image
   },
 }) => {
   return (
     <div class='profile-top bg-primary p-2'>
-      <img class='round-img my-1' src={avatar} alt='' />
+      <img class='round-img profile-img my-1' src={!image? avatar :image} alt='' />
       <h1 class='large'>{name}</h1>
       <h2 >Asking Price: {price} €/hour</h2>
 
