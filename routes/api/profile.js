@@ -52,7 +52,9 @@ router.post(
       education,
       phone,
       email,
-      image
+      image,
+      rating,
+      numReviews
     } = req.body;
 
     // Build profile object
@@ -63,6 +65,8 @@ router.post(
     if (location) profileFields.location = location;
     if (bio) profileFields.bio = bio;
     if (skills) profileFields.skills = skills;
+    if (rating) profileFields.rating = rating;
+    if (numReviews) profileFields.numReviews = numReviews;
 
     // Build social object
     profileFields.info = {};
@@ -135,45 +139,46 @@ router.get('/user/:user_id', async (req, res) => {
   }
 });
 
-// @route    POST api/profile/user/:user_id/review
+// @route    POST api/profile/user/:user_id/reviews
 // @desc     Create new Review
 // @access   Private
-router.post('/user/:user_id/reviews',auth, async (req, res) => {
+router.post('/user/:user_id/reviews', auth, async (req, res) => {
   try {
     const { rating, comment } = req.body;
 
     const profile = await Profile.findOne({
       user: req.params.user_id,
     });
-    if (product) {
-      const alreadyReviewed = product.reviews.find(
-        (r) => r.user.toString() === req.user._id.toString()
+
+    if (profile) {
+      const alreadyReviewed = profile.reviews.find(
+        (r) => r.user.toString() === req.params.user_id.toString()
       );
 
       if (alreadyReviewed) {
-        res.status(400).json({ msg: 'Product already reviewed' });
+        res.status(400).json({ msg: 'This seller is already reviewed' });
       }
 
       const review = {
-        name: req.user.name,
+        name: req.params.user_id,
         rating: Number(rating),
         comment,
         user: req.params.user_id,
       };
 
-      product.reviews.push(review);
+      profile.reviews.push(review);
 
-      product.numReviews = product.reviews.length;
+      profile.numReviews = profile.reviews.length;
 
-      product.rating =
-        product.reviews.reduce((acc, item) => item.rating + acc, 0) /
-        product.reviews.length;
+      profile.rating =
+        profile.reviews.reduce((acc, item) => item.rating + acc, 0) /
+        profile.reviews.length;
 
-      await product.save();
+      await profile.save();
       res.status(201).json({ message: 'Review added' });
     } else {
       res.status(404);
-      throw new Error('Product not found');
+      throw new Error('Profile not found');
     }
   } catch (err) {
     console.error(err.message);

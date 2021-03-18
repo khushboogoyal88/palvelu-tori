@@ -1,8 +1,25 @@
 const mongoose = require('mongoose');
 
+const reviewSchema = mongoose.Schema(
+  {
+    name: { type: String, required: true },
+    rating: { type: Number, required: true },
+    comment: { type: String, required: true },
+    user: {
+      type: mongoose.Schema.Types.ObjectId,
+      required: true,
+      ref: 'user',
+    },
+  },
+  {
+    timestamps: true,
+  }
+);
+
 const ProfileSchema = new mongoose.Schema({
   user: {
     type: mongoose.Schema.Types.ObjectId,
+    required: true,
     ref: 'user',
   },
   image: {
@@ -23,6 +40,21 @@ const ProfileSchema = new mongoose.Schema({
     type: Number,
     required: true,
   },
+
+  reviews: [reviewSchema],
+
+  rating: {
+    type: Number,
+    required: true,
+    default: 0,
+  },
+
+  numReviews: {
+    type: Number,
+    required: true,
+    default: 0,
+  },
+
   education: [
     {
       degree: {
