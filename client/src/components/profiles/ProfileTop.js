@@ -1,5 +1,4 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 
 const ProfileTop = ({
   profile: {
@@ -33,8 +32,5 @@ const ProfileTop = ({
   );
 };
 
-ProfileTop.propTypes = {
-  profile: PropTypes.object.isRequired,
-};
 
 export default ProfileTop;

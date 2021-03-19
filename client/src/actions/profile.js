@@ -8,6 +8,9 @@ import {
   PROFILE_ERROR,
   UPDATE_PROFILE,
   ACCOUNT_DELETED,
+  CREATE_REVIEW,
+  CREATE_REVIEW_FAIL,
+  RESET_REVIEW
 } from './types';
 
 // Get current users profile
@@ -168,5 +171,43 @@ export const deleteAccount = () => async dispatch => {
         payload: { msg: err.response.statusText, status: err.response.status }
       });
     }
+  }
+};
+
+// Create Seller Review
+export const createSellerReview = (userId, review, history) => async dispatch=> {
+  try {
+    const config = {
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    };
+
+    const res = await axios.post(
+      `/api/profile/user/${userId}/reviews`,
+      review,
+      config
+    );
+
+    dispatch({
+      type: CREATE_REVIEW,
+      payload: res.data,
+    });
+
+    dispatch(setAlert('Review Added', 'success'));
+
+    history.push('/dashboard');
+  } catch (err) {
+    console.log(err);
+    const errors = err.response.data.errors;
+
+    if (errors) {
+      errors.forEach((error) => dispatch(setAlert(error.msg, 'danger')));
+    }
+
+    dispatch({
+      type: PROFILE_ERROR,
+      payload: { msg: err.response.statusText, status: err.response.status },
+    });
   }
 };

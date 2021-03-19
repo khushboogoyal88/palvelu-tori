@@ -160,10 +160,10 @@ router.post('/user/:user_id/reviews', auth, async (req, res) => {
       }
 
       const review = {
-        name: req.params.user_id,
+        name: req.user.id,
         rating: Number(rating),
         comment,
-        user: req.params.user_id,
+        user: req.user.id,
       };
 
       profile.reviews.push(review);
