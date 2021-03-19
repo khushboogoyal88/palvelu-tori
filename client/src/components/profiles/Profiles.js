@@ -20,7 +20,6 @@ const Profiles = ({ getProfiles, profile: { profiles, loading }, match }) => {
         <Spinner />
       ) : (
         <Fragment>
-          <Route render={({ history }) => <SearchBox history={history} />} />
           <h1 className='large text-primary'>All Services</h1>
           <p className='lead'>
             <i className='fab fa-connectdevelop' /> Browse one step solution for

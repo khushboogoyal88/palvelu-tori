@@ -144,7 +144,7 @@ router.get('/user/:user_id', async (req, res) => {
 // @access   Private
 router.post('/user/:user_id/reviews', auth, async (req, res) => {
   try {
-    const { rating, comment } = req.body;
+    const {name, rating, comment } = req.body;
 
     const profile = await Profile.findOne({
       user: req.params.user_id,
@@ -160,7 +160,7 @@ router.post('/user/:user_id/reviews', auth, async (req, res) => {
       }
       else{
         const review = {
-          name: req.user.id,
+          name,
           rating: Number(rating),
           comment,
           user: req.user.id,
@@ -193,7 +193,7 @@ router.post('/user/:user_id/reviews', auth, async (req, res) => {
 router.delete('/', auth, async (req, res) => {
   try {
     // Remove profile
-    await Profile.findOneAndRemove({ user: req.user.id });
+    await Profile.findOneAndRemove({ user: req.user.name });
     // Remove user
     await User.findOneAndRemove({ _id: req.user.id });
 

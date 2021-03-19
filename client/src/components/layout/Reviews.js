@@ -21,10 +21,12 @@ const Reviews = ({
   const submitHandler = (e) => {
     e.preventDefault();
     console.log({
+      name,
       rating,
       comment,
     });
     createSellerReview(profile.user._id, {
+      name,
       rating,
       comment,
     }, history);
