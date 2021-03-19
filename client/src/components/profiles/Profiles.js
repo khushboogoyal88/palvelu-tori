@@ -1,9 +1,7 @@
 import React, { Fragment, useEffect } from 'react';
-import { Route } from 'react-router-dom';
 import { connect } from 'react-redux';
 import Spinner from '../layout/Spinner';
 import ProfileItem from './ProfileItem';
-import SearchBox from '../layout/Searchbox';
 import { getProfiles } from '../../actions/profile';
 
 const Profiles = ({ getProfiles, profile: { profiles, loading }, match }) => {

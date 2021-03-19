@@ -1,5 +1,4 @@
 import { GET_PROFILE, PROFILE_ERROR, CLEAR_PROFILE, UPDATE_PROFILE, GET_PROFILES, CREATE_REVIEW, CREATE_REVIEW_FAIL, RESET_REVIEW } from '../actions/types';
-import { createProfile } from '../actions/profile';
 
 const initialState = {
   profile: null,
