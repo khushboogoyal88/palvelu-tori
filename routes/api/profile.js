@@ -144,7 +144,7 @@ router.get('/user/:user_id', async (req, res) => {
 // @access   Private
 router.post('/user/:user_id/reviews', auth, async (req, res) => {
   try {
-    const { rating, comment } = req.body;
+    const {name, rating, comment } = req.body;
 
     const profile = await Profile.findOne({
       user: req.params.user_id,
@@ -152,30 +152,32 @@ router.post('/user/:user_id/reviews', auth, async (req, res) => {
 
     if (profile) {
       const alreadyReviewed = profile.reviews.find(
-        (r) => r.user.toString() === req.params.user_id.toString()
+        (r) => r.user.toString() === req.user.id.toString()
       );
 
       if (alreadyReviewed) {
         res.status(400).json({ msg: 'This seller is already reviewed' });
       }
+      else{
+        const review = {
+          name,
+          rating: Number(rating),
+          comment,
+          user: req.user.id,
+        };
 
-      const review = {
-        name: req.params.user_id,
-        rating: Number(rating),
-        comment,
-        user: req.params.user_id,
-      };
+        profile.reviews.push(review);
 
-      profile.reviews.push(review);
+        profile.numReviews = profile.reviews.length;
 
-      profile.numReviews = profile.reviews.length;
+        profile.rating =
+          profile.reviews.reduce((acc, item) => item.rating + acc, 0) /
+          profile.reviews.length;
 
-      profile.rating =
-        profile.reviews.reduce((acc, item) => item.rating + acc, 0) /
-        profile.reviews.length;
-
-      await profile.save();
-      res.status(201).json({ message: 'Review added' });
+        await profile.save();
+        res.status(201).json({ msg: 'Review added' });
+      }
+      
     } else {
       res.status(404);
       throw new Error('Profile not found');
@@ -191,7 +193,7 @@ router.post('/user/:user_id/reviews', auth, async (req, res) => {
 router.delete('/', auth, async (req, res) => {
   try {
     // Remove profile
-    await Profile.findOneAndRemove({ user: req.user.id });
+    await Profile.findOneAndRemove({ user: req.user.name });
     // Remove user
     await User.findOneAndRemove({ _id: req.user.id });
 

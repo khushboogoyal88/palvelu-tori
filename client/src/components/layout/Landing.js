@@ -1,6 +1,7 @@
 import React from 'react'
 import { Link } from 'react-router-dom';
-
+import { Route } from 'react-router-dom';
+import SearchBox from '../layout/Searchbox';
 
 const Landing = () => {
   return (
@@ -12,6 +13,7 @@ const Landing = () => {
             Buy and Sell all kind of Household Services from plumbing to
             Baby-sitting.
           </p>
+          <Route render={({ history }) => <SearchBox history={history} />} />
           <div className='buttons'>
             <Link to='/profiles' className='btn btn-primary'>
               Buy Services

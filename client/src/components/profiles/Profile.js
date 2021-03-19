@@ -4,8 +4,10 @@ import { connect } from 'react-redux';
 import ProfileTop from './ProfileTop';
 import ProfileAbout from './ProfileAbout';
 import ProfileEducation from './ProfileEducation';
+import Reviews from '../layout/Reviews';
 import Spinner from '../layout/Spinner';
 import { getProfileById } from '../../actions/profile';
+
 
 const Profile = ({
   getProfileById,
@@ -37,12 +39,12 @@ const Profile = ({
           <div class='profile-grid my-1'>
             <ProfileTop profile={profile} />
             <ProfileAbout profile={profile} />
-            
+            <Reviews profile={profile} />
             <div className='profile-edu bg-white p-2'>
               <h2 className='text-primary'>Education</h2>
               {profile.education.length > 0 ? (
                 <Fragment>
-                  {profile.education.map(education => (
+                  {profile.education.map((education) => (
                     <ProfileEducation
                       key={education._id}
                       education={education}
