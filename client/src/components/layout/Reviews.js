@@ -28,6 +28,8 @@ const Reviews = ({
       rating,
       comment,
     }, history);
+
+    window.location.reload();
   };
   return (
     <div className=' bg-secondary p-2'>

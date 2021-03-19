@@ -175,7 +175,7 @@ export const deleteAccount = () => async dispatch => {
 };
 
 // Create Seller Review
-export const createSellerReview = (userId, review, history) => async dispatch=> {
+export const createSellerReview = (userId, review) => async dispatch=> {
   try {
     const config = {
       headers: {
@@ -196,7 +196,6 @@ export const createSellerReview = (userId, review, history) => async dispatch=> 
 
     dispatch(setAlert('Review Added', 'success'));
 
-    history.push('/dashboard');
   } catch (err) {
     console.log(err);
     const errors = err.response.data.errors;

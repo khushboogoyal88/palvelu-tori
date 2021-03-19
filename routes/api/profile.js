@@ -152,30 +152,32 @@ router.post('/user/:user_id/reviews', auth, async (req, res) => {
 
     if (profile) {
       const alreadyReviewed = profile.reviews.find(
-        (r) => r.user.toString() === req.params.user_id.toString()
+        (r) => r.user.toString() === req.user.id.toString()
       );
 
       if (alreadyReviewed) {
         res.status(400).json({ msg: 'This seller is already reviewed' });
       }
+      else{
+        const review = {
+          name: req.user.id,
+          rating: Number(rating),
+          comment,
+          user: req.user.id,
+        };
 
-      const review = {
-        name: req.user.id,
-        rating: Number(rating),
-        comment,
-        user: req.user.id,
-      };
+        profile.reviews.push(review);
 
-      profile.reviews.push(review);
+        profile.numReviews = profile.reviews.length;
 
-      profile.numReviews = profile.reviews.length;
+        profile.rating =
+          profile.reviews.reduce((acc, item) => item.rating + acc, 0) /
+          profile.reviews.length;
 
-      profile.rating =
-        profile.reviews.reduce((acc, item) => item.rating + acc, 0) /
-        profile.reviews.length;
-
-      await profile.save();
-      res.status(201).json({ message: 'Review added' });
+        await profile.save();
+        res.status(201).json({ msg: 'Review added' });
+      }
+      
     } else {
       res.status(404);
       throw new Error('Profile not found');
