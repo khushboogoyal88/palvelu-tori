@@ -1,5 +1,6 @@
 import React, { Fragment, useState } from 'react';
 import {Link, withRouter} from 'react-router-dom';
+import FileBase from 'react-file-base64';
 import { connect } from 'react-redux';
 import {createProfile} from '../../actions/profile'
 
@@ -12,6 +13,7 @@ const CreateProfile = ({createProfile, history}) => {
       bio: '',
       phone: '',
       email: '',
+      image: '',
     });
 
     const [displayContactlInputs, toggleContactInputs] = useState(false);
@@ -23,6 +25,7 @@ const CreateProfile = ({createProfile, history}) => {
       bio,
       phone,
       email,
+      image
     } = formData;
 
     const onChange = (e) =>
@@ -99,6 +102,12 @@ const CreateProfile = ({createProfile, history}) => {
             <small className='form-text'>Tell us a little about yourself</small>
           </div>
 
+          <FileBase
+            type='file'
+            multiple={false}
+            onDone={({ base64 }) => setFormData({ ...formData, image: base64 })}
+          />
+
           <div className='my-2'>
             <button
               onClick={() => toggleContactInputs(!displayContactlInputs)}
@@ -134,6 +143,118 @@ const CreateProfile = ({createProfile, history}) => {
               </div>
             </Fragment>
           )}
+
+          <div className='form-group'>
+            <label>
+              Image:{' '}
+              <FileBase
+                id='image'
+                type='file'
+                multiple={false}
+                onDone={({ base64 }) =>
+                  setFormData({ ...formData, image: base64 })
+                }
+              />
+            </label>
+          </div>
+
+          <div>{' OR'}</div>
+
+          <div class='grid-container'>
+            <div class='grid-item'>
+              <img
+                className='round-img avatar-img'
+                src='./images/1.png'
+                alt=''
+              />
+              <p>Avatar 1</p>
+            </div>
+            <div class='grid-item'>
+              <img
+                className='round-img avatar-img'
+                src='./images/2.png'
+                alt=''
+              />
+              <p>Avatar 2</p>
+            </div>
+            <div class='grid-item'>
+              <img
+                className='round-img avatar-img'
+                src='./images/3.png'
+                alt=''
+              />
+              <p>Avatar 3</p>
+            </div>
+            <div class='grid-item'>
+              <img
+                className='round-img avatar-img'
+                src='./images/4.png'
+                alt=''
+              />
+              <p>Avatar 4</p>
+            </div>
+            <div class='grid-item'>
+              <img
+                className='round-img avatar-img'
+                src='./images/5.png'
+                alt=''
+              />
+              <p>Avatar 5</p>
+            </div>
+            <div class='grid-item'>
+              <img
+                className='round-img avatar-img'
+                src='./images/6.png'
+                alt=''
+              />
+              <p>Avatar 6</p>
+            </div>
+            <div class='grid-item'>
+              <img
+                className='round-img avatar-img'
+                src='./images/7.png'
+                alt=''
+              />
+              <p>Avatar 7</p>
+            </div>
+            <div class='grid-item'>
+              <img
+                className='round-img avatar-img'
+                src='./images/8.png'
+                alt=''
+              />
+              <p>Avatar 8</p>
+            </div>
+            <div class='grid-item'>
+              <img
+                className='round-img avatar-img'
+                src='./images/9.png'
+                alt=''
+              />
+              <p>Avatar 9</p>
+            </div>
+          </div>
+
+          <div className='form-group'>
+            <select
+              type='text'
+              placeholder='Image'
+              name='image'
+              value={image}
+              onChange={(e) => onChange(e)}
+            >
+              <option value='0'>Choose an avatar image.</option>
+              <option value='/images/1.png'>Avatar1</option>
+              <option value='/images/2.png'>Avatar2 </option>
+              <option value='/images/3.png'>Avatar3</option>
+              <option value='/images/4.png'>Avatar4</option>
+              <option value='/images/5.png'>Avatar5</option>
+              <option value='/images/6.png'>Avatar6</option>
+              <option value='/images/7.png'>Avatar7</option>
+              <option value='/images/8.png'>Avatar 8</option>
+              <option value='/images/9.png'>Avatar 9</option>
+            </select>
+          </div>
 
           <input type='submit' className='btn btn-primary my-1' />
           <Link className='btn btn-light my-1' to='/dashboard'>

@@ -1,6 +1,7 @@
 
 import React, { Fragment, useState, useEffect } from 'react';
 import { Link, withRouter } from 'react-router-dom';
+import FileBase from 'react-file-base64';
 import { connect } from 'react-redux';
 import { createProfile, getCurrentProfile } from '../../actions/profile';
 
@@ -149,77 +150,56 @@ const EditProfile = ({
           </Fragment>
         )}
 
+        <div className='form-group'>
+          <label>
+            Image:{' '}
+            <FileBase
+              id='image'
+              type='file'
+              multiple={false}
+              onDone={({ base64 }) =>
+                setFormData({ ...formData, image: base64 })
+              }
+            />
+          </label>
+        </div>
+
+        <div>{' OR'}</div>
         <div class='grid-container'>
           <div class='grid-item'>
-            <img
-              className='round-img avatar-img'
-              src='./images/1.png'
-              alt=''
-            />
+            <img className='round-img avatar-img' src='./images/1.png' alt='' />
             <p>Avatar 1</p>
           </div>
           <div class='grid-item'>
-            <img
-              className='round-img avatar-img'
-              src='./images/2.png'
-              alt=''
-            />
+            <img className='round-img avatar-img' src='./images/2.png' alt='' />
             <p>Avatar 2</p>
           </div>
           <div class='grid-item'>
-            <img
-              className='round-img avatar-img'
-              src='./images/3.png'
-              alt=''
-            />
+            <img className='round-img avatar-img' src='./images/3.png' alt='' />
             <p>Avatar 3</p>
           </div>
           <div class='grid-item'>
-            <img
-              className='round-img avatar-img'
-              src='./images/4.png'
-              alt=''
-            />
+            <img className='round-img avatar-img' src='./images/4.png' alt='' />
             <p>Avatar 4</p>
           </div>
           <div class='grid-item'>
-            <img
-              className='round-img avatar-img'
-              src='./images/5.png'
-              alt=''
-            />
+            <img className='round-img avatar-img' src='./images/5.png' alt='' />
             <p>Avatar 5</p>
           </div>
           <div class='grid-item'>
-            <img
-              className='round-img avatar-img'
-              src='./images/6.png'
-              alt=''
-            />
+            <img className='round-img avatar-img' src='./images/6.png' alt='' />
             <p>Avatar 6</p>
           </div>
           <div class='grid-item'>
-            <img
-              className='round-img avatar-img'
-              src='./images/7.png'
-              alt=''
-            />
+            <img className='round-img avatar-img' src='./images/7.png' alt='' />
             <p>Avatar 7</p>
           </div>
           <div class='grid-item'>
-            <img
-              className='round-img avatar-img'
-              src='./images/8.png'
-              alt=''
-            />
+            <img className='round-img avatar-img' src='./images/8.png' alt='' />
             <p>Avatar 8</p>
           </div>
           <div class='grid-item'>
-            <img
-              className='round-img avatar-img'
-              src='./images/9.png'
-              alt=''
-            />
+            <img className='round-img avatar-img' src='./images/9.png' alt='' />
             <p>Avatar 9</p>
           </div>
         </div>
