@@ -3,7 +3,7 @@ import { Link, Redirect } from 'react-router-dom';
 import {connect} from 'react-redux';
 import {login} from '../../actions/auth'
 
-const Login = ({login, isAuthenticated}) => {
+const Login = ({login, auth}) => {
 const [formData, setFormData] = useState({
   email: '',
   password: '',
@@ -21,8 +21,12 @@ const onSubmit = async (e) => {
 
 //redirect if logged in
 
-if(isAuthenticated){
-  return <Redirect to="/dashboard"/>
+if (auth.isAuthenticated && auth.user.isSeller) {
+  return <Redirect to='/dashboard' />;
+}
+
+if (auth.isAuthenticated && !auth.user.isSeller) {
+  return <Redirect to='/profiles' />;
 }
 
 return (
@@ -62,6 +66,6 @@ return (
 }
 
 const mapStateToProps = (state) => ({
-  isAuthenticated: state.auth.isAuthenticated,
+  auth: state.auth,
 });
 export default connect(mapStateToProps, {login})(Login)

@@ -27,7 +27,7 @@ router.post(
     }
 
     //Check if user already exists
-    const { name, email, password } = req.body;
+    const { name, email, password, isSeller } = req.body;
 
     try {
       let user = await User.findOne({ email });
@@ -50,6 +50,7 @@ router.post(
         email,
         avatar,
         password,
+        isSeller
       });
 
       //Encrypt password

@@ -3,9 +3,9 @@ import {Link} from 'react-router-dom';
 import {connect} from 'react-redux';
 import {logout} from '../../actions/auth'
 
-const Navbar = ({auth: {isAuthenticated, loading}, logout}) => {
+const Navbar = ({auth: {isAuthenticated, loading, user}, logout}) => {
 
-  const authLinks = (
+  const sellerLinks = (
     <ul>
       <li>
         <Link to='/profiles'>All Services</Link>
@@ -13,8 +13,22 @@ const Navbar = ({auth: {isAuthenticated, loading}, logout}) => {
       <li>
         <Link to='/dashboard'>
           <i className='fas fa-user'></i>{' '}
-          <span className='hide-sm'>Dashboard</span>
+          <span className='hide-sm'>My Profile</span>
         </Link>
+      </li>
+      <li>
+        <Link to='#!' onClick={logout}>
+          <i className='fas fa-sign-out-alt'></i>{' '}
+          <span className='hide-sm'>Logout</span>
+        </Link>
+      </li>
+    </ul>
+  );
+
+  const buyerLinks = (
+    <ul>
+      <li>
+        <Link to='/profiles'>All Services</Link>
       </li>
       <li>
         <Link to='#!' onClick={logout}>
@@ -40,10 +54,19 @@ const Navbar = ({auth: {isAuthenticated, loading}, logout}) => {
     return (
       <nav className='navbar bg-dark'>
         <h1>
-          <Link to='/'>Palvelu Tori
-          </Link>
+          <Link to='/'>Palvelu Tori</Link>
         </h1>
-       {!loading && (<Fragment>{isAuthenticated ? authLinks : guestLinks}</Fragment>)}
+        {!loading && (
+          <Fragment>
+            {isAuthenticated && user.isSeller ? (
+              sellerLinks
+            ) : (
+              <Fragment>
+                {isAuthenticated && !user.isSeller ? buyerLinks : guestLinks}
+              </Fragment>
+            )}
+          </Fragment>
+        )}
       </nav>
     );
 }

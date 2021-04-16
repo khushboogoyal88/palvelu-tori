@@ -35,7 +35,6 @@ export default function profile (state = initialState, action) {
       return {
         ...state,
         profile: null,
-        loading: false,
       };
     case CREATE_REVIEW:
       return {

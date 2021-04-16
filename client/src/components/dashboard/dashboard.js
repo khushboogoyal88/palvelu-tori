@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { getCurrentProfile, deleteAccount } from '../../actions/profile';
 import Spinner from '../layout/Spinner'
-import DashboardActions from '../dashboard/DashboardActions'
+import DashboardActions from './DashboardActions'
 import Education from './Education';
 
 const Dashboard = ({ getCurrentProfile, deleteAccount, auth: {user}, profile: {profile, loading} }) => {
@@ -15,7 +15,7 @@ const Dashboard = ({ getCurrentProfile, deleteAccount, auth: {user}, profile: {p
     <Spinner />
   ) : (
     <Fragment>
-      <h1 className='large text-primary'>Dashboard</h1>
+      <h1 className='large text-primary'>My Profiles</h1>
       <p className='lead'>
         <i className='fas fa-user' /> Welcome {user && user.name}
       </p>

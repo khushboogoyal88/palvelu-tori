@@ -4,15 +4,16 @@ import {Link, Redirect} from "react-router-dom";
 import {setAlert} from '../../actions/alert'
 import {register} from '../../actions/auth'
 
-const Register = ({setAlert, register, isAuthenticated}) => {
+const Register = ({setAlert, register, auth}) => {
     const [formData, setFormData] = useState({
         name:'',
         email:'',
         password:'',
-        password2:'' 
+        password2:'',
+        isSeller:false
     })
 
-    const {name, email, password, password2} = formData;
+    const {name, email, password, password2, isSeller} = formData;
     
     const changeHandler = e => setFormData({...formData, [e.target.name]: e.target.value})
     
@@ -21,12 +22,16 @@ const Register = ({setAlert, register, isAuthenticated}) => {
         if(password !== password2){
             setAlert('Passwords do not match', 'danger');
         }else{
-            register({name, email, password});
+            register({name, email, password, isSeller});
         }
     }
 
-    if(isAuthenticated){
+    if(auth.isAuthenticated && auth.user.isSeller){
       return <Redirect to="/dashboard"/>
+    }
+
+    if (auth.isAuthenticated && !auth.user.isSeller) {
+      return <Redirect to='/profiles' />;
     }
     return (
       <Fragment>
@@ -34,7 +39,7 @@ const Register = ({setAlert, register, isAuthenticated}) => {
         <p className='lead'>
           <i className='fas fa-user'></i> Create Your Account
         </p>
-        <form className='form' onSubmit={e=>submitHandler(e)}>
+        <form className='form' onSubmit={(e) => submitHandler(e)}>
           <div className='form-group'>
             <input
               type='text'
@@ -54,9 +59,7 @@ const Register = ({setAlert, register, isAuthenticated}) => {
               onChange={(e) => changeHandler(e)}
               required
             />
-            <small className='form-text'>
-              
-            </small>
+            <small className='form-text'></small>
           </div>
           <div className='form-group'>
             <input
@@ -80,6 +83,16 @@ const Register = ({setAlert, register, isAuthenticated}) => {
               minLength='6'
             />
           </div>
+
+          <div className='form-group'>
+            <input
+              type='checkbox'
+              name='isSeller'
+              value={true}
+              onChange={(e) => changeHandler(e)}
+            />
+            <label for='isSeller'> I want to sell my services</label>
+          </div>
           <input type='submit' className='btn btn-primary' value='Register' />
         </form>
         <p className='my-1'>
@@ -90,6 +103,6 @@ const Register = ({setAlert, register, isAuthenticated}) => {
 }
 
 const mapStateToProps = (state) => ({
-  isAuthenticated: state.auth.isAuthenticated,
+  auth: state.auth
 });
 export default connect(mapStateToProps, { setAlert, register })(Register);

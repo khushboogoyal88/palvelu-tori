@@ -30,10 +30,9 @@ export const getCurrentProfile = () => async (dispatch) => {
   }
 };
 
-// Get current users profile
+// Get all users profile
 export const getProfiles = (keyword = '') => async (dispatch) => {
   dispatch({ type: CLEAR_PROFILE });
-
   try {
     const res = await axios.get(`/api/profile?keyword=${keyword}`);
     dispatch({
@@ -52,6 +51,7 @@ export const getProfiles = (keyword = '') => async (dispatch) => {
 export const getProfileById = userId => async dispatch => {
   try {
     const res = await axios.get(`/api/profile/user/${userId}`);
+
     dispatch({
       type: GET_PROFILE,
       payload: res.data

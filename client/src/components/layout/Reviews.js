@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import { Row, Col, ListGroup, Form, Button } from 'react-bootstrap';
 import { createSellerReview,  } from '../../actions/profile';
 import Rating from '../layout/Rating'
+import { setAlert } from '../../actions/alert';
 
 const Reviews = ({
   createSellerReview,
@@ -20,17 +21,12 @@ const Reviews = ({
 
   const submitHandler = (e) => {
     e.preventDefault();
-    console.log({
-      name,
-      rating,
-      comment,
-    });
     createSellerReview(profile.user._id, {
       name,
       rating,
       comment,
     }, history);
-
+    
     window.location.reload();
   };
   return (
