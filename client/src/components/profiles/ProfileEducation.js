@@ -1,7 +1,7 @@
 import React from 'react';
 
 const ProfileEducation = ({
-  education: { degree, location, description },
+  education: { degree, location, description }, bio
 }) => (
   <div>
     <h3 className='text-dark'>{degree}</h3>

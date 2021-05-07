@@ -39,7 +39,7 @@ const Profile = ({
           <div class='profile-grid my-1'>
             <ProfileTop profile={profile} />
             <ProfileAbout profile={profile} />
-            <Reviews profile={profile} />
+
             <div className='profile-edu bg-white p-2'>
               <h2 className='text-primary'>Formal Training</h2>
               {profile.education.length > 0 ? (
@@ -52,9 +52,10 @@ const Profile = ({
                   ))}
                 </Fragment>
               ) : (
-                <h4>No training credentials</h4>
+                <h4>No training information.</h4>
               )}
             </div>
+            <Reviews profile={profile} />
           </div>
         </Fragment>
       )}

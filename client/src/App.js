@@ -30,7 +30,7 @@ const App =() =>{
   return (
     <Provider store={store}>
       <Router>
-        <Fragment>
+        <div className="outer-container">
           <Navbar />
           <Route exact path='/' component={Landing} />
           <section className='container'>
@@ -59,7 +59,7 @@ const App =() =>{
               />
             </Switch>
           </section>
-        </Fragment>
+        </div>
       </Router>
     </Provider>
   );

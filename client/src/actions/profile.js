@@ -118,7 +118,7 @@ export const addEducation = (formData, history) => async dispatch => {
       payload: res.data
     });
 
-    dispatch(setAlert('Education Added', 'success'));
+    dispatch(setAlert('Training Added', 'success'));
 
     history.push('/dashboard');
   } catch (err) {

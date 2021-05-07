@@ -50,7 +50,7 @@ const EditProfile = ({
   };
   return (
     <Fragment>
-      <h1 className='large text-primary'>Edit Your Profile</h1>
+      <h1 className='large text-primary'>Edit Profile</h1>
       <p className='lead'>
         <i className='fas fa-user' /> Let's get some information to make your
         profile stand out
@@ -58,12 +58,10 @@ const EditProfile = ({
       <small>* = required field</small>
       <form className='form' onSubmit={(e) => onSumbit(e)}>
         <div className='form-group'>
-          <select
-            placeholder='* Skills'
-            name='skills'
-            value={skills}
-            onChange={(e) => onChange(e)}
-          >
+          <div className='form-text'>
+            * Give us an idea of what kind of services you want to provide
+          </div>
+          <select name='skills' value={skills} onChange={(e) => onChange(e)}>
             <option value='0'>* Select the Service you want to provide.</option>
             <option value='Baby sitting'>Baby sitting</option>
             <option value='Plumbing'>Plumbing</option>
@@ -77,48 +75,44 @@ const EditProfile = ({
             <option value='Catering Services'>Catering Services</option>
             <option value='Other'>Other</option>
           </select>
-          <small className='form-text'>
-            Give us an idea of what kind of services you want to provide
-          </small>
         </div>
 
         <div className='form-group'>
+          <div className='form-text'>*Price you wanna ask.</div>
           <input
             type='text'
-            placeholder='* Price'
             name='price'
             value={price}
             onChange={(e) => onChange(e)}
           />
-          <small className='form-text'>Price you wanna ask.</small>
         </div>
 
         <div className='form-group'>
+          <div className='form-text'>*City (eg. Espoo, Lohja etc)</div>
           <input
             type='text'
-            placeholder=' * Location'
             name='location'
             value={location}
             onChange={(e) => onChange(e)}
           />
-          <small className='form-text'>City (eg. Espoo, Lohja etc)</small>
         </div>
 
         <div className='form-group'>
+          <div className='form-text'>A short description of yours services</div>
           <textarea
-            placeholder='A short description of yours services'
             name='bio'
             value={bio}
+            cols='30'
+            rows='5'
             onChange={(e) => onChange(e)}
           />
-          <small className='form-text'>Tell us a little about yourself</small>
         </div>
 
-        <div className='my-2'>
+        <div className='my-2 text-center'>
           <button
             onClick={() => toggleContactInputs(!displayContactlInputs)}
             type='button'
-            className='btn btn-light'
+            className='btn btn-light text-center'
           >
             Edit Contact Details
           </button>
@@ -151,8 +145,8 @@ const EditProfile = ({
         )}
 
         <div className='form-group'>
-          <label>
-            Image:{' '}
+          <label className='form-text text-center'>
+            Add an image:{'  '}
             <FileBase
               id='image'
               type='file'
@@ -164,7 +158,11 @@ const EditProfile = ({
           </label>
         </div>
 
-        <div>{' OR'}</div>
+        <div className='text-center'>{' OR'}</div>
+
+        <div className='form-text my-1 text-center'>
+          Choose an avatar image
+        </div>
         <div class='grid-container'>
           <div class='grid-item'>
             <img className='round-img avatar-img' src='./images/1.png' alt='' />

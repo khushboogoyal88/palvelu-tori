@@ -3,6 +3,7 @@ import React from 'react';
 const ProfileTop = ({
   profile: {
     location,
+    skills,
     info,
     price,
     user: { name, avatar },
@@ -10,23 +11,39 @@ const ProfileTop = ({
   },
 }) => {
   return (
-    <div class='profile-top bg-primary p-2'>
-      <img class='round-img profile-img my-1' src={!image? avatar :image} alt='' />
-      <h1 class='large'>{name}</h1>
-      <h2 >Asking Price: {price} €/hour</h2>
+    <div class='profile-top bg-light p-2'>
+      <img
+        class='round-img profile-img my-1'
+        src={!image ? avatar : image}
+        alt=''
+      />
+      <div className='profile-info'>
+        <div className='py-1 medium'>
+          {skills.map((skill, index) => (
+            <div key={index}>
+              {' '}
+              <h1>
+                <h1 class="text-primary">{skill} {'Services'}</h1>
+              </h1>
+            </div>
+          ))}
+        </div>
+        <h2>{name}</h2>
 
-      <p>{location && <span>{location}</span>}</p>
-      <div class='icons my-1'>
-        {info && info.phone && (
-          <p>
-            <i class='fas fa-phone fa-2x' /> {info.phone}
-          </p>
-        )}
-        {info && info.email && (
-          <p>
-            <i class='fas fa-envelope fa-2x' /> {info.email}
-          </p>
-        )}
+        <h3>Asking Price: {price} €/hour</h3>
+        <h3>{location && <span>{location}</span>}</h3>
+        <div class='icons my-1'>
+          {info && info.phone && (
+            <p>
+              <i class='fas fa-phone fa-2x' /> {info.phone}
+            </p>
+          )}
+          {info && info.email && (
+            <p>
+              <i class='fas fa-envelope fa-2x' /> {info.email}
+            </p>
+          )}
+        </div>
       </div>
     </div>
   );

@@ -10,10 +10,10 @@ const Register = ({setAlert, register, auth}) => {
         email:'',
         password:'',
         password2:'',
-        isSeller:false
+        isSeller:false,
     })
 
-    const {name, email, password, password2, isSeller} = formData;
+    const { name, email, password, password2, isSeller} = formData;
     
     const changeHandler = e => setFormData({...formData, [e.target.name]: e.target.value})
     
@@ -22,16 +22,12 @@ const Register = ({setAlert, register, auth}) => {
         if(password !== password2){
             setAlert('Passwords do not match', 'danger');
         }else{
-            register({name, email, password, isSeller});
+            register({ name, email, password, isSeller });
         }
     }
 
-    if(auth.isAuthenticated && auth.user.isSeller){
-      return <Redirect to="/dashboard"/>
-    }
-
-    if (auth.isAuthenticated && !auth.user.isSeller) {
-      return <Redirect to='/profiles' />;
+    if(auth.isAuthenticated){
+      return <Redirect to="/profiles"/>
     }
     return (
       <Fragment>
@@ -86,13 +82,24 @@ const Register = ({setAlert, register, auth}) => {
 
           <div className='form-group'>
             <input
-              type='checkbox'
+              type='radio'
               name='isSeller'
-              value={true}
+              value='true'
               onChange={(e) => changeHandler(e)}
             />
-            <label for='isSeller'> I want to sell my services</label>
+            <label for='true'> I want to sell my Services</label>
           </div>
+
+          <div className='form-group'>
+            <input
+              type='radio'
+              name='isSeller'
+              value='false'
+              onChange={(e) => changeHandler(e)}
+            />
+            <label for='false'> {' '}I want to buy Services</label>
+          </div>
+
           <input type='submit' className='btn btn-primary' value='Register' />
         </form>
         <p className='my-1'>

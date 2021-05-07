@@ -21,13 +21,10 @@ const onSubmit = async (e) => {
 
 //redirect if logged in
 
-if (auth.isAuthenticated && auth.user.isSeller) {
-  return <Redirect to='/dashboard' />;
-}
-
-if (auth.isAuthenticated && !auth.user.isSeller) {
+if (auth.isAuthenticated) {
   return <Redirect to='/profiles' />;
 }
+
 
 return (
   <Fragment>

@@ -133,6 +133,7 @@ img {
   padding: 0.4rem 1.3rem;
   font-size: 1rem;
   border: none;
+  border-radius: 4px;
   cursor: pointer;
   margin-right: 0.5rem;
   transition: opacity 0.2s ease-in;
@@ -226,12 +227,14 @@ img {
 
 .profile-img {
   height: 250px;
-  width: 220px
+  width: 220px;
+  object-fit: center;
 }
 
 .avatar-img {
-  height: 200px;
-  width: 180px
+  height: 150px;
+  width: 130px;
+  object-fit: center;
 }
 .line {
   height: 1px;
@@ -256,8 +259,9 @@ img {
 
 .form .form-text {
   display: block;
-  margin-top: 0.3rem;
-  color: #888;
+  margin-bottom: 0.3rem;
+  color: var(--dark-color);
+  font-size: 1.2rem;
 }
 
 .form input[type='text'],
@@ -266,10 +270,13 @@ img {
 .form input[type='date'],
 .form select,
 .form textarea {
+
   display: block;
   width: 100%;
+  font-family: 'Raleway', sans-serif;
   padding: 0.4rem;
-  font-size: 1.2rem;
+  font-size: 1.1rem;
+  color: var(--dark-color);
   border: 1px solid #ccc;
 }
 
@@ -285,22 +292,6 @@ button {
 .form .contact-input i {
   padding: 0.5rem;
   width: 4rem;
-}
-
-.form .contact-input i.fa-twitter {
-  color: #38a1f3;
-}
-.form .contact-input i.fa-facebook {
-  color: #3b5998;
-}
-.form .contact-input i.fa-instagram {
-  color: #3f729b;
-}
-.form .contact-input i.fa-youtube {
-  color: #c4302b;
-}
-.form .social-input i.fa-linkedin {
-  color: #0077b5;
 }
 
 .table th,
@@ -392,23 +383,32 @@ button {
   grid-template-areas:
     'top top'
     'about about'
-    'exp edu'
-    'github github';
+    'exp edu';
   grid-gap: 1rem;
 }
 
 .profile-top {
   grid-area: top;
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   align-items: center;
   justify-content: center;
-  text-align: center;
 }
 
 .profile-top img {
   width: 250px;
+  margin-right: 100px;
+
 }
+
+
+
+/* .profile-top .profile-info{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center
+} */
 
 .profile-top .icons a {
   color: #fff;
@@ -511,22 +511,26 @@ button {
   margin-bottom: 0.5rem;
 }
 
+/* .rating{
+  text-align: center;
+} */
+
 .grid-container {
   display: grid;
   grid-template-columns: auto auto auto auto auto;
-  padding: 20px;
+  /* padding: 20px; */
 }
 .grid-item {
   background-color: rgba(255, 255, 255, 0.8);
-  padding: 15px;
-  font-size: 30px;
+  padding: 10px;
+  font-size: 16px;
   text-align: center;
 }
 
 /* Mobile Styles */
 @media (max-width: 700px) {
   .container {
-    margin-top: 8rem;
+    margin-top: 8rem
   }
 
   .hide-sm {
@@ -577,10 +581,27 @@ button {
 
   /* Profile Page */
 
+  .profile-img {
+  height: 220px;
+  width: 180px;
+  object-fit: center;
+}
+
+.avatar-img {
+  height: 180px;
+  width: 150px;
+  object-fit: center;
+}
+
+  .profile-top {
+  flex-direction: column;
+  text-align: center;
+}
   .profile-top img,
   .profile img {
     width: 200px;
-    margin: auto;
+    height: 220px;
+    object-fit: center;
   }
 
   .profile-grid {
@@ -609,4 +630,34 @@ button {
   .post button {
     padding: 0.3rem 0.4rem;
   }
+
+  .grid-container {
+  display: grid;
+  grid-template-columns: auto auto;
+  padding: 20px;
+}
+.form-text {
+  font-size: 1rem !important;
+}
+.form input[type='text'],
+.form input[type='email'],
+.form input[type='password'],
+.form input[type='date'],
+.form select,
+.form textarea {
+
+  font-size: .8rem;
+  
+}
+.avatar-img {
+  height: 140px;
+  width: 120px;
+  object-fit: center;
+}
+.container {
+  padding: 0 1rem;
+}
+.profile-top.p-2{
+  padding: 1rem;
+}
 }

@@ -37,7 +37,7 @@ const CreateProfile = ({createProfile, history}) => {
     }
     return (
       <Fragment>
-        <h1 className='large text-primary'>Create Your Profile</h1>
+        <h1 className='large text-primary'>Create Profile</h1>
         <p className='lead'>
           <i className='fas fa-user' /> Let's get some information to make your
           profile stand out
@@ -45,15 +45,11 @@ const CreateProfile = ({createProfile, history}) => {
         <small>* = required field</small>
         <form className='form' onSubmit={(e) => onSumbit(e)}>
           <div className='form-group'>
-            <select
-              placeholder='* Skills'
-              name='skills'
-              value={skills}
-              onChange={(e) => onChange(e)}
-            >
-              <option value='0'>
-                * Select the Service you want to provide.
-              </option>
+            <div className='form-text'>
+              * Give us an idea of what kind of services you want to provide
+            </div>
+            <select name='skills' value={skills} onChange={(e) => onChange(e)}>
+              <option value='0'>Select the Service you want to provide.</option>
               <option value='Baby sitting'>Baby sitting</option>
               <option value='Plumbing'>Plumbing</option>
               <option value='House Keeping'>House Keeping</option>
@@ -66,53 +62,45 @@ const CreateProfile = ({createProfile, history}) => {
               <option value='Catering Services'>Catering Services</option>
               <option value='Other'>Other</option>
             </select>
-            <small className='form-text'>
-              Give us an idea of what kind of services you want to provide
-            </small>
           </div>
           <div className='form-group'>
+            <div className='form-text'>*Price you wanna ask.</div>
             <input
               type='text'
-              placeholder='* Price'
               name='price'
               value={price}
               onChange={(e) => onChange(e)}
             />
-            <small className='form-text'>Price you wanna ask.</small>
           </div>
 
           <div className='form-group'>
+            <div className='form-text'>*City (eg. Espoo, Lohja etc)</div>
             <input
               type='text'
-              placeholder=' * Location'
               name='location'
               value={location}
               onChange={(e) => onChange(e)}
             />
-            <small className='form-text'>City (eg. Espoo, Lohja etc)</small>
           </div>
 
           <div className='form-group'>
+            <div className='form-text'>
+              A short description of yours services
+            </div>
             <textarea
-              placeholder='A short description of yours services'
               name='bio'
               value={bio}
+              cols='30'
+              rows='5'
               onChange={(e) => onChange(e)}
             />
-            <small className='form-text'>Tell us a little about yourself</small>
           </div>
 
-          <FileBase
-            type='file'
-            multiple={false}
-            onDone={({ base64 }) => setFormData({ ...formData, image: base64 })}
-          />
-
-          <div className='my-2'>
+          <div className='my-2 text-center'>
             <button
               onClick={() => toggleContactInputs(!displayContactlInputs)}
               type='button'
-              className='btn btn-light'
+              className='btn btn-light text-center'
             >
               Add Contact Details
             </button>
@@ -144,9 +132,9 @@ const CreateProfile = ({createProfile, history}) => {
             </Fragment>
           )}
 
-          <div className='form-group'>
-            <label>
-              Image:{' '}
+          <div className='form-group text-center'>
+            <label className='form-text text-center'>
+              Add an image:{' '}
               <FileBase
                 id='image'
                 type='file'
@@ -158,8 +146,10 @@ const CreateProfile = ({createProfile, history}) => {
             </label>
           </div>
 
-          <div>{' OR'}</div>
-
+          <div className='text-center'>{' OR'}</div>
+          <div className='form-text my-1 text-center'>
+            Choose an avatar image
+          </div>
           <div class='grid-container'>
             <div class='grid-item'>
               <img
@@ -243,7 +233,7 @@ const CreateProfile = ({createProfile, history}) => {
               value={image}
               onChange={(e) => onChange(e)}
             >
-              <option value='0'>Choose an avatar image.</option>
+              <option value='0'>Choose an image.</option>
               <option value='/images/1.png'>Avatar1</option>
               <option value='/images/2.png'>Avatar2 </option>
               <option value='/images/3.png'>Avatar3</option>

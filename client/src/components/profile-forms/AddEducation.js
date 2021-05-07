@@ -25,8 +25,8 @@ const AddEducation = ({ addEducation, history }) => {
     <Fragment>
       <h1 class='large text-primary'>Add Your Training</h1>
       <p class='lead'>
-        <i class='fas fa-code-branch' /> Add any formal training  that you
-        have attained
+        Add any formal training that you have
+        attained
       </p>
       <small>* = required field</small>
       <form
@@ -37,9 +37,9 @@ const AddEducation = ({ addEducation, history }) => {
         }}
       >
         <div class='form-group'>
+          <div className='form-text'>* Degree or Certificate</div>
           <input
             type='text'
-            placeholder='* Degree or Certificate'
             name='degree'
             value={degree}
             onChange={(e) => onChange(e)}
@@ -47,21 +47,21 @@ const AddEducation = ({ addEducation, history }) => {
           />
         </div>
         <div class='form-group'>
+          <div className='form-text'>Location</div>
           <input
             type='text'
-            placeholder='Location'
             name='location'
             value={location}
             onChange={(e) => onChange(e)}
           />
         </div>
- 
+
         <div class='form-group'>
+          <div className='form-text'>Training Description</div>
           <textarea
             name='description'
             cols='30'
             rows='5'
-            placeholder='Training Description'
             value={description}
             onChange={(e) => onChange(e)}
           />
