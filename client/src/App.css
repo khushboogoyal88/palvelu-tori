@@ -530,7 +530,12 @@ button {
 /* Mobile Styles */
 @media (max-width: 700px) {
   .container {
-    margin-top: 3rem
+    margin-top: 3rem;
+    margin-bottom: 5rem
+  }
+
+  .landing{
+    margin-bottom: -4rem;
   }
 
   .hide-sm {
@@ -572,6 +577,10 @@ button {
 
   .navbar .welcome {
     display: none;
+  }
+
+  .navbar i{
+    font-size: 24px;
   }
 
   /* Profiles Page */
