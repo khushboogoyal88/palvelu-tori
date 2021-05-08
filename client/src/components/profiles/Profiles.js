@@ -2,15 +2,16 @@ import React, { Fragment, useEffect } from 'react';
 import { connect } from 'react-redux';
 import Spinner from '../layout/Spinner';
 import ProfileItem from './ProfileItem';
-import { getProfiles } from '../../actions/profile';
+import { getProfiles, getCurrentProfile } from '../../actions/profile';
 
-const Profiles = ({ getProfiles, profile: { profiles, loading }, match }) => {
+const Profiles = ({ getProfiles, getCurrentProfile, profile: { profile, profiles, loading }, match }) => {
 
   const keyword = match.params.keyword;
 
   useEffect(() => {
     getProfiles(keyword);
-  }, [getProfiles, keyword]);
+    getCurrentProfile();
+  }, [getProfiles, keyword, getCurrentProfile]);
 
   return (
     <Fragment>
@@ -42,4 +43,6 @@ const mapStateToProps = (state) => ({
   profile: state.profile,
 });
 
-export default connect(mapStateToProps, { getProfiles })(Profiles);
+export default connect(mapStateToProps, { getCurrentProfile, getProfiles })(
+  Profiles
+);

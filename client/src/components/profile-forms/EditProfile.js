@@ -3,13 +3,15 @@ import React, { Fragment, useState, useEffect } from 'react';
 import { Link, withRouter } from 'react-router-dom';
 import FileBase from 'react-file-base64';
 import { connect } from 'react-redux';
-import { createProfile, getCurrentProfile } from '../../actions/profile';
-
+import { createProfile, getCurrentProfile, deleteAccount } from '../../actions/profile';
+import Education from '../dashboard/Education'
 
 const EditProfile = ({
   profile: { profile, loading },
+  auth: { user },
   createProfile,
   getCurrentProfile,
+  deleteAccount,
   history,
 }) => {
   const [formData, setFormData] = useState({
@@ -52,10 +54,9 @@ const EditProfile = ({
     <Fragment>
       <h1 className='large text-primary'>Edit Profile</h1>
       <p className='lead'>
-        <i className='fas fa-user' /> Let's get some information to make your
-        profile stand out
+        <i className='fas fa-user' /> Welcome {user && user.name}
       </p>
-      <p className="small">* = required field</p>
+      <p className='small'>* = required field</p>
       <form className='form' onSubmit={(e) => onSumbit(e)}>
         <div className='form-group'>
           <div className='form-text'>
@@ -114,7 +115,7 @@ const EditProfile = ({
             type='button'
             className='btn btn-light'
           >
-            Edit Contact Details
+            <i className='fas fa-pen text-primary' /> Edit Contact Details
           </button>
         </div>
 
@@ -145,6 +146,14 @@ const EditProfile = ({
         )}
 
         <div className='form-group'>
+          <Link to='/add-education' className='btn btn-light'>
+            <i className='fas fa-graduation-cap text-primary' /> Add Training
+          </Link>
+        </div>
+
+        <Education education={profile.education} />
+
+        <div className='form-group my-2'>
           <label className='form-text text-center'>
             Add an image:{'  '}
             <FileBase
@@ -160,9 +169,7 @@ const EditProfile = ({
 
         <div className='text-center'>{' OR'}</div>
 
-        <div className='form-text my-1 text-center'>
-          Choose an avatar image
-        </div>
+        <div className='form-text my-1 text-center'>Choose an avatar image</div>
         <div class='grid-container'>
           <div class='grid-item'>
             <img className='round-img avatar-img' src='./images/1.png' alt='' />
@@ -227,14 +234,21 @@ const EditProfile = ({
           Go Back
         </Link>
       </form>
+
+      <div className='my-2'>
+        <button className='btn btn-danger del' onClick={() => deleteAccount()}>
+          <i className='fas fa-user-minus' /> Delete My Account
+        </button>
+      </div>
     </Fragment>
   );
 };
 
 const mapStateToProps = (state) => ({
   profile: state.profile,
+  auth: state.auth,
 });
 
-export default connect(mapStateToProps, { createProfile, getCurrentProfile })(
+export default connect(mapStateToProps, { createProfile, getCurrentProfile, deleteAccount })(
   withRouter(EditProfile)
 );

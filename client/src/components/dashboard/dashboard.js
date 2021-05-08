@@ -1,10 +1,9 @@
 import React, { useEffect, Fragment } from 'react';
-import { Link } from 'react-router-dom';
+import { Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { getCurrentProfile, deleteAccount } from '../../actions/profile';
 import Spinner from '../layout/Spinner'
-import DashboardActions from './DashboardActions'
-import Education from './Education';
+
 
 const Dashboard = ({ getCurrentProfile, deleteAccount, auth: {user}, profile: {profile, loading} }) => {
   useEffect(() => {
@@ -21,20 +20,11 @@ const Dashboard = ({ getCurrentProfile, deleteAccount, auth: {user}, profile: {p
       </p>
       {profile !== null ? (
         <Fragment>
-          <DashboardActions />
-          <Education education={profile.education} />
-          <div className='my-2'>
-            <button className='btn btn-danger del' onClick={() => deleteAccount()}>
-              <i className='fas fa-user-minus' /> Delete My Account
-            </button>
-          </div>
+          <Redirect to='/edit-profile' />
         </Fragment>
       ) : (
         <Fragment>
-          <p>You have not yet setup a profile, please add some info</p>
-          <Link to='/create-profile' className='btn btn-primary create'>
-            Create Profile
-          </Link>
+          <Redirect to='/create-profile'/> 
         </Fragment>
       )}
     </Fragment>
