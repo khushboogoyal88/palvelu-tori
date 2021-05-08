@@ -46,12 +46,12 @@ const CreateProfile = ({ createProfile, history, auth: { user } }) => {
             <option value='Plumbing'>Plumbing</option>
             <option value='House Keeping'>House Keeping</option>
             <option value='Tutoring'>Tutoring</option>
-            <option value='Electrical Services'>Electrical Services</option>
+            <option value='Electrical'>Electrical Services</option>
             <option value='Moving and delivery'>Moving and delivery</option>
             <option value='Personal Care'>
               Personal Care(like haicut, manicure)
             </option>
-            <option value='Catering Services'>Catering Services</option>
+            <option value='Catering'>Catering Services</option>
             <option value='Other'>Other</option>
           </select>
         </div>
