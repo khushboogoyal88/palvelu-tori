@@ -766,7 +766,7 @@ text-align: center;
       .navbar{
         position: fixed;
     top: 91vh;
-    height: 67px;
+    height: 9vh;
     width: 100%;
     background-color: var(--dark-color);
       }
