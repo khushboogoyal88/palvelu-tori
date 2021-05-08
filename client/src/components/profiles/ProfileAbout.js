@@ -10,7 +10,6 @@ const ProfileAbout = ({
   <div class='profile-about bg-white p-2'>
     {bio && (
       <Fragment>
-
         <p>{bio}</p>
       </Fragment>
     )}

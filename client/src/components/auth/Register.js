@@ -2,7 +2,7 @@ import React, {Fragment, useState} from 'react';
 import {connect} from 'react-redux'
 import {Link, Redirect} from "react-router-dom";
 import {setAlert} from '../../actions/alert'
-import {register} from '../../actions/auth'
+import {register, login} from '../../actions/auth'
 
 const Register = ({setAlert, register, auth}) => {
     const [formData, setFormData] = useState({
@@ -27,7 +27,7 @@ const Register = ({setAlert, register, auth}) => {
     }
 
     if(auth.isAuthenticated){
-      return <Redirect to="/profiles"/>
+      return <Redirect to='/profiles' />;
     }
     return (
       <Fragment>
@@ -37,9 +37,9 @@ const Register = ({setAlert, register, auth}) => {
         </p>
         <form className='form' onSubmit={(e) => submitHandler(e)}>
           <div className='form-group'>
+            <div className='form-text'>Name</div>
             <input
               type='text'
-              placeholder='Name'
               name='name'
               value={name}
               onChange={(e) => changeHandler(e)}
@@ -47,9 +47,9 @@ const Register = ({setAlert, register, auth}) => {
             />
           </div>
           <div className='form-group'>
+            <div className='form-text'>Email</div>
             <input
               type='email'
-              placeholder='Email Address'
               name='email'
               value={email}
               onChange={(e) => changeHandler(e)}
@@ -58,9 +58,9 @@ const Register = ({setAlert, register, auth}) => {
             <small className='form-text'></small>
           </div>
           <div className='form-group'>
+            <div className='form-text'>Password</div>
             <input
               type='password'
-              placeholder='Password'
               name='password'
               value={password}
               onChange={(e) => changeHandler(e)}
@@ -69,9 +69,9 @@ const Register = ({setAlert, register, auth}) => {
             />
           </div>
           <div className='form-group'>
+            <div className='form-text'>Confirm Password</div>
             <input
               type='password'
-              placeholder='Confirm Password'
               name='password2'
               value={password2}
               onChange={(e) => changeHandler(e)}
@@ -80,7 +80,7 @@ const Register = ({setAlert, register, auth}) => {
             />
           </div>
 
-          <div className='form-group'>
+          <div className='form-group form-text'>
             <input
               type='radio'
               name='isSeller'
@@ -90,19 +90,19 @@ const Register = ({setAlert, register, auth}) => {
             <label for='true'> I want to sell my Services</label>
           </div>
 
-          <div className='form-group'>
+          <div className='form-group form-text'>
             <input
               type='radio'
               name='isSeller'
               value='false'
               onChange={(e) => changeHandler(e)}
             />
-            <label for='false'> {' '}I want to buy Services</label>
+            <label for='false'> I want to buy Services</label>
           </div>
 
           <input type='submit' className='btn btn-primary' value='Register' />
         </form>
-        <p className='my-1'>
+        <p className='my-2'>
           Already have an account? <Link to='/login'>Sign In</Link>
         </p>
       </Fragment>

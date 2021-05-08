@@ -6,7 +6,7 @@ const Education = ({ education, deleteEducation }) => {
   const educations = education.map((edu) => (
     <tr key={edu._id}>
       <td>{edu.degree}</td>
-      <td className='hide-sm'>{edu.description}</td>
+      <td>{edu.description}</td>
 
       <td>
         <button
@@ -26,8 +26,8 @@ const Education = ({ education, deleteEducation }) => {
         <thead>
           <tr>
             <th>Degree</th>
-            <th className='hide-sm'>Description</th>
-            <th />
+            <th>Description</th>
+            
           </tr>
         </thead>
         <tbody>{educations}</tbody>

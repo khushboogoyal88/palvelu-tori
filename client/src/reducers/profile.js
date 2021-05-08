@@ -32,6 +32,7 @@ export default function profile (state = initialState, action) {
         profile: null,
       };
     case CLEAR_PROFILE:
+      case LOGOUT:
       return {
         ...state,
         profile: null,

@@ -28,7 +28,7 @@ const AddEducation = ({ addEducation, history }) => {
         Add any formal training that you have
         attained
       </p>
-      <small>* = required field</small>
+      <p className="small">* = required field</p>
       <form
         class='form'
         onSubmit={(e) => {

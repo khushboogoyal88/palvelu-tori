@@ -55,7 +55,7 @@ const EditProfile = ({
         <i className='fas fa-user' /> Let's get some information to make your
         profile stand out
       </p>
-      <small>* = required field</small>
+      <p className="small">* = required field</p>
       <form className='form' onSubmit={(e) => onSumbit(e)}>
         <div className='form-group'>
           <div className='form-text'>
@@ -98,7 +98,7 @@ const EditProfile = ({
         </div>
 
         <div className='form-group'>
-          <div className='form-text'>A short description of yours services</div>
+          <div className='form-text'>A brief description of yours services</div>
           <textarea
             name='bio'
             value={bio}
@@ -108,11 +108,11 @@ const EditProfile = ({
           />
         </div>
 
-        <div className='my-2 text-center'>
+        <div className='my-2'>
           <button
             onClick={() => toggleContactInputs(!displayContactlInputs)}
             type='button'
-            className='btn btn-light text-center'
+            className='btn btn-light'
           >
             Edit Contact Details
           </button>

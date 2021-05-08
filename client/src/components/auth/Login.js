@@ -34,9 +34,9 @@ return (
     </p>
     <form className='form' onSubmit={(e) => onSubmit(e)}>
       <div className='form-group'>
+        <div className='form-text'>Email Address</div>
         <input
           type='email'
-          placeholder='Email Address'
           name='email'
           value={email}
           onChange={(e) => onChange(e)}
@@ -44,9 +44,9 @@ return (
         />
       </div>
       <div className='form-group'>
+        <div className='form-text'>Password</div>
         <input
           type='password'
-          placeholder='Password'
           name='password'
           value={password}
           onChange={(e) => onChange(e)}

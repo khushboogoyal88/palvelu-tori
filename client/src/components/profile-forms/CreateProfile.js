@@ -42,7 +42,7 @@ const CreateProfile = ({createProfile, history}) => {
           <i className='fas fa-user' /> Let's get some information to make your
           profile stand out
         </p>
-        <small>* = required field</small>
+        <p className="small">* = required field</p>
         <form className='form' onSubmit={(e) => onSumbit(e)}>
           <div className='form-group'>
             <div className='form-text'>

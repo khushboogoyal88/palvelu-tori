@@ -6,6 +6,7 @@ import Landing from './components/layout/Landing'
 import Register from './components/auth/Register'
 import Login from './components/auth/Login'
 import Alert from './components/layout/Alert'
+import Decision from './components/layout/Decision'
 import CreateProfile from './components/profile-forms/CreateProfile';
 import EditProfile from './components/profile-forms/EditProfile';
 import AddEducation from './components/profile-forms/AddEducation';
@@ -30,7 +31,7 @@ const App =() =>{
   return (
     <Provider store={store}>
       <Router>
-        <div className="outer-container">
+        <div className='outer-container'>
           <Navbar />
           <Route exact path='/' component={Landing} />
           <section className='container'>
@@ -38,6 +39,7 @@ const App =() =>{
             <Switch>
               <Route exact path='/register' component={Register} />
               <Route exact path='/login' component={Login} />
+              <Route exact path='/decision' component={Decision} />
               <Route exact path='/profiles' component={Profiles} />
               <Route path='/search/:keyword' component={Profiles} />
               <Route exact path='/profile/:id' component={Profile} />

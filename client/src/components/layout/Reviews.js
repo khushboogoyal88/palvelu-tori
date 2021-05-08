@@ -1,10 +1,8 @@
 import React, { Fragment, useState } from 'react';
 import {Link} from 'react-router-dom'
 import { connect } from 'react-redux';
-import { Row, Col, ListGroup, Form, Button } from 'react-bootstrap';
 import { createSellerReview,  } from '../../actions/profile';
 import Rating from '../layout/Rating'
-import { setAlert } from '../../actions/alert';
 
 const Reviews = ({
   createSellerReview,
@@ -37,7 +35,7 @@ const Reviews = ({
           <h2 className='text-primary'>Reviews</h2>
           {profile.reviews.map((review) => (
             <div key={review._id}>
-              <strong>{review.name}</strong>
+              <h4>{review.name}</h4>
               <Rating value={review.rating} />
               <p>{review.createdAt.substring(0, 10)}</p>
               <p>{review.comment}</p>
