@@ -1,6 +1,10 @@
 {
-  "name": "palvelu-tori",
+  "name": "palvelutori",
   "version": "1.0.0",
+  "engines": {
+    "node": "14.14.0",
+    "npm": "6.14.8"
+  },
   "description": "Market place to buy ans sell services in Finland",
   "main": "server.js",
   "scripts": {
