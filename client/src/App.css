@@ -530,7 +530,7 @@ button {
 /* Mobile Styles */
 @media (max-width: 700px) {
   .container {
-    margin-top: 8rem
+    margin-top: 3rem
   }
 
   .hide-sm {
@@ -552,13 +552,18 @@ button {
 
   /* Navbar */
   .navbar {
+    border-top: solid .1rem var(--primary-color);
     display: block;
-    text-align: center;
+    /* text-align: center; */
   }
 
   .navbar ul {
     text-align: center;
     justify-content: center;
+  }
+
+  .navbar ul li{
+    padding: 5px !important;
   }
 
   .navbar h1 {
@@ -743,4 +748,23 @@ text-align: center;
         text-align: center;
       }
 
+      .navbar{
+        position: fixed;
+    top: 91vh;
+    height: 67px;
+    width: 100%;
+    background-color: var(--dark-color);
+      }
+
+      .navbar ul{
+        display: flex;
+      justify-content: space-between;
+      align-items: center;
+      }
+
+     
+      .navbar ul li {
+        display: inline-block;
+        padding: 10px;
+      }
 }

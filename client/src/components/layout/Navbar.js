@@ -31,7 +31,16 @@ const Navbar = ({auth: {isAuthenticated, loading, user}, logout}) => {
   const buyerLinks = (
     <ul>
       <li>
-        <Link to='/profiles'>All Services</Link>
+        <Link to='/profiles'>
+          <i className='fas fa-home'></i>{' '}
+          <span className='hide-sm'>All Services</span>
+        </Link>
+      </li>
+      <li>
+        <Link to='/'>
+          <i className='fas fa-search'></i>{' '}
+          <span className='hide-sm'>Search</span>
+        </Link>
       </li>
       <li>
         <Link to='#!' onClick={logout}>
@@ -45,7 +54,7 @@ const Navbar = ({auth: {isAuthenticated, loading, user}, logout}) => {
     <ul>
       <li>
         <Link to='/profiles'>
-          <i className='fas fa-sign-out-alt'></i> All Services
+        All Services
         </Link>
       </li>
       <li>
@@ -58,16 +67,16 @@ const Navbar = ({auth: {isAuthenticated, loading, user}, logout}) => {
   );
     return (
       <nav className='navbar bg-dark'>
-        <h1>
+        <h2 className="hide-sm">
           <Link to='/'>PalveluTori</Link>
-        </h1>
+        </h2>
         {!loading && (
           <Fragment>
-            {isAuthenticated && (user.isSeller) ? (
+            {isAuthenticated && user.isSeller ? (
               sellerLinks
             ) : (
               <Fragment>
-                {isAuthenticated && (!user.isSeller) ? buyerLinks : guestLinks}
+                {isAuthenticated && !user.isSeller ? buyerLinks : guestLinks}
               </Fragment>
             )}
           </Fragment>
