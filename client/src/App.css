@@ -145,6 +145,49 @@ img {
   outline: none;
 }
 
+.alert-container{
+  position: fixed;
+    z-index: 1000;
+    top: 2rem;
+    left: 5rem;
+    width: 12rem;
+    height: 8rem;
+    padding: 0.5rem;
+    opacity: 0.95;
+    border: none;
+    border-radius: 2px;
+}
+
+.alert-container-success:after{
+  content: '';
+  display: block;
+      position: absolute;
+      margin: -1.05rem 5rem;
+      width: 0;
+      height: 0;
+      border-left: 8px solid transparent;
+      border-right: 8px solid transparent;
+      border-top: 12px solid var(--success-color);
+}
+
+.alert-container-danger:after{
+  content: '';
+  display: block;
+      position: absolute;
+      margin: -1.05rem 5rem;
+      width: 0;
+      height: 0;
+      border-left: 8px solid transparent;
+      border-right: 8px solid transparent;
+      border-top: 12px solid var(--danger-color);
+}
+
+.alert-msg {
+        margin-top: 0.5rem;
+        font-size: 1rem;
+        letter-spacing: 0.1rem;
+        text-align: center;
+      }
 .badge {
   font-size: 0.8rem;
   padding: 0.1rem;
@@ -561,6 +604,10 @@ button {
     font-size: 1.2rem;
   }
 
+  .alert-container{
+    top: .5rem;
+    right: 1rem;
+}
   /* Navbar */
   .navbar {
     border-top: solid .1rem var(--primary-color);
@@ -604,12 +651,6 @@ button {
   .profile-img {
   height: 220px;
   width: 180px;
-  object-fit: center;
-}
-
-.avatar-img {
-  height: 180px;
-  width: 150px;
   object-fit: center;
 }
 
@@ -677,8 +718,8 @@ button {
   
 }
 .avatar-img {
-  height: 140px;
-  width: 120px;
+  height: 130px;
+  width: 110px;
   object-fit: center;
 }
 .container {
@@ -719,49 +760,7 @@ text-align: center;
   text-align: center;
 }
 
-.alert-container{
-  position: fixed;
-    z-index: 1000;
-    top: 5rem;
-    right: 1rem;
-    width: 12rem;
-    height: 8rem;
-    padding: 0.5rem;
-    opacity: 0.90;
-    border: none;
-    border-radius: 2px;
-}
 
-.alert-container-success:after{
-  content: '';
-  display: block;
-      position: absolute;
-      margin: -1.05rem 5rem;
-      width: 0;
-      height: 0;
-      border-left: 8px solid transparent;
-      border-right: 8px solid transparent;
-      border-top: 12px solid var(--success-color);
-}
-
-.alert-container-danger:after{
-  content: '';
-  display: block;
-      position: absolute;
-      margin: -1.05rem 5rem;
-      width: 0;
-      height: 0;
-      border-left: 8px solid transparent;
-      border-right: 8px solid transparent;
-      border-top: 12px solid var(--danger-color);
-}
-
-.alert-msg {
-        margin-top: 0.5rem;
-        font-size: 1rem;
-        letter-spacing: 0.1rem;
-        text-align: center;
-      }
 
       .navbar{
         position: fixed;

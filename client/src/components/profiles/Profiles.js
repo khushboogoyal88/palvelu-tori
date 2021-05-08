@@ -19,8 +19,8 @@ const Profiles = ({ getProfiles, getCurrentProfile, profile: { profile, profiles
         <Spinner />
       ) : (
         <Fragment>
-          <h1 className='large text-primary'>All Services</h1>
-          <p className='lead'>
+          <h1 className='large text-primary text-center'>All Services</h1>
+          <p className='lead text-center'>
             <i className='fab fa-connectdevelop' /> Browse one step solution for
             all your Service needs
           </p>
