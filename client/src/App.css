@@ -1,4 +1,8 @@
 /* Global Styles */
+
+@import url('https://fonts.googleapis.com/css2?family=Nunito&display=swap');
+
+
 :root {
   --primary-color: #15c6ad;
   --dark-color: #343a40;
@@ -14,7 +18,7 @@
 }
 
 body {
-  font-family: 'Raleway', sans-serif;
+  font-family: 'Nunito', sans-serif;
   font-size: 1rem;
   line-height: 1.6;
   background-color: #fff;
