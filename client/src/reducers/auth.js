@@ -9,12 +9,20 @@ import {
   ACCOUNT_DELETED,
 } from '../actions/types';
 
-const initialState= {
-    token: localStorage.getItem('token'),
-    isAuthenticated: null,
-    loading: true,
-    user: null
-}
+const initialState = {
+  token: localStorage.getItem('token'),
+  isAuthenticated: null,
+  loading: true,
+  user: {
+    isSeller: true,
+    _id: '60793f98d4ebcb3089152653',
+    name: 'Khushboo Goyal',
+    email: 'khushboobansal88@gmail.com',
+    avatar:
+      '//www.gravatar.com/avatar/d68cf908ca3c4d1f5dea8d585820dd6e?s=200&r=pg&d=mm',
+    date: '2021-04-16T07:41:12.845Z',
+  },
+};
 
 export default function auth (state= initialState, action){
     const{type, payload} = action;
