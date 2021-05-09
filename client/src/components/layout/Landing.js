@@ -8,7 +8,7 @@ const Landing = () => {
     <section className='landing'>
       <div className='dark-overlay'>
         <div className='landing-inner'>
-          
+          <h1 className='x-large'>Palvelu Tori</h1>
           <p className='lead'>
             Buy and Sell all kind of Household Services from plumbing to
             Baby-sitting.
