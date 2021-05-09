@@ -56,7 +56,7 @@ const CreateProfile = ({ createProfile, history, auth: { user } }) => {
           </select>
         </div>
         <div className='form-group'>
-          <div className='form-text'>*Price you wanna ask.</div>
+          <div className='form-text'>*Price you wanna ask(per hour).</div>
           <input
             type='text'
             name='price'
@@ -124,7 +124,7 @@ const CreateProfile = ({ createProfile, history, auth: { user } }) => {
 
         <div className='form-group text-center'>
           <label className='form-text text-center'>
-            Add an image:{' '}
+            Add profile picture:{' '}
             <FileBase
               id='image'
               type='file'

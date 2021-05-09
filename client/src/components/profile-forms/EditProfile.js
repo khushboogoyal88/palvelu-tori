@@ -69,7 +69,7 @@ const EditProfile = ({
       <form className='form' onSubmit={(e) => onSumbit(e)}>
         <div className='form-group my-2'>
           <label className='form-text text-center'>
-            Add an image:{'  '}
+            Edit profile image:{'  '}
             <FileBase
               id='image'
               type='file'
@@ -165,7 +165,7 @@ const EditProfile = ({
           </div>
 
           <div className='form-group'>
-            <div className='form-text'>*Price you wanna ask.</div>
+            <div className='form-text'>*Price you wanna ask(per hour).</div>
             <input
               type='text'
               name='price'

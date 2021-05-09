@@ -28,21 +28,22 @@ const Reviews = ({
     window.location.reload();
   };
   return (
-    <div className=' bg-secondary'>
+    <div className=' bg-secondary profile-reviews'>
       <Fragment>
         {profile.reviews.length === 0 && <h4>No Reviews</h4>}
         <div className='profile-edu bg-white p-2'>
           <h2 className='text-primary'>Reviews</h2>
           {profile.reviews.map((review) => (
             <div key={review._id}>
-              <h4>{review.name}</h4>
+              <h3>{review.name}</h3>
               <Rating value={review.rating} />
-              <p>{review.createdAt.substring(0, 10)}</p>
+              <p class="small"
+              >{review.createdAt.substring(0, 10)}</p>
               <p>{review.comment}</p>
             </div>
           ))}
           <div>
-            <h2 className='text-dark'>Write a Customer Review</h2>
+            <h2 className='text-dark text-primary'>Write a Customer Review</h2>
             {isAuthenticated && loading === false ? (
               <form class='form' onSubmit={submitHandler}>
                 <div class='form-group'>

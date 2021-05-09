@@ -438,8 +438,7 @@ button {
 
 .profile-top {
   grid-area: top;
-  display: flex;
-  flex-direction: row;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
 }
@@ -493,7 +492,7 @@ button {
 .profile-exp > div,
 .profile-edu > div {
   margin-bottom: 1rem;
-  padding-bottom: 1rem;
+  padding-bottom: .25rem;
   border-bottom: #ccc 1px dotted;
 }
 
@@ -505,6 +504,10 @@ button {
 .profile-exp p,
 .profile-edu p {
   margin: 0.5rem 0;
+}
+
+.profile-reviews .profile-edu .small{
+  font-size: 0.6rem;
 }
 
 .profile-github {
@@ -576,6 +579,10 @@ button {
   text-align: center;
 }
 
+.profile-intro{
+    display: flex;
+  }
+
 /* Mobile Styles */
 @media (max-width: 700px) {
   .container {
@@ -638,8 +645,22 @@ button {
 
   /* Profiles Page */
   .profile {
-    grid-template-columns: 1fr;
+    grid-template-rows: 1fr;
+    grid-template-columns: 2fr 6fr;
     text-align: center;
+    line-height: 1.4;
+  }
+
+  .profile .btn{
+    font-size: 0.9rem;
+  }
+
+  .profile h2{
+    font-size: 1.2rem;
+  }
+
+  .profile h3{
+    font-size: 1rem;
   }
 
   .profile ul {
@@ -654,17 +675,40 @@ button {
   object-fit: center;
 }
 
-  .profile-top {
-  flex-direction: column;
+  .profile-top, .profile-edu{
+  flex-direction: row;
   text-align: center;
+  padding: 0.5rem;
+}
+
+.profile-top h1{
+  font-size: 1.8rem;
+}
+
+.profile-top h2, .profile-edu h2 .profile-reviews h2{
+  font-size: 1.5rem;
+}
+
+.profile-top h3, .profile-edu h3{
+  font-size: 1rem;
+}
+
+.profile-top p, .profile-about p, .profile-edu p {
+  font-size: .9rem;
+}
+
+.profile-edu h4{
+  font-size: .8rem;
 }
   .profile-top img,
   .profile img {
-    width: 200px;
-    height: 220px;
+    width: 120px;
+    height: 140px;
     object-fit: center;
+    margin-right: 0px;
   }
 
+  
   .profile-grid {
     grid-template-areas:
       'top'
@@ -674,6 +718,9 @@ button {
       'github';
   }
 
+  .profile-about, .profile-edu{
+    padding: 1.2rem;
+  }
   .profile-about .skills {
     flex-direction: column;
   }
@@ -719,7 +766,7 @@ button {
 }
 .avatar-img {
   height: 130px;
-  width: 110px;
+  width: 120px;
   object-fit: center;
 }
 .container {

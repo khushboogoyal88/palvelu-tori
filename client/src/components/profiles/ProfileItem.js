@@ -22,7 +22,7 @@ const ProfileItem = ({
           alt=''
           className='round-img profile-img'
         />
-        <Rating value={rating} text={`${numReviews} reviews`} />
+        <Rating value={rating} text={`(${numReviews})`} />
       </div>
 
       <div>
@@ -32,8 +32,8 @@ const ProfileItem = ({
 
         <h3 className='my'>{name}</h3>
         <p>{price && <span> {price} €/hour</span>}</p>
-        <Link to={`/profile/${_id}`} className='btn btn-primary'>
-          View Profile
+        <Link to={`/profile/${_id}`} className='btn btn-primary my'>
+          See Details
         </Link>
       </div>
       <div class='icons my-1 hide-sm'>
