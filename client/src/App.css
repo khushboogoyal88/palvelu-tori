@@ -251,8 +251,8 @@ img {
 .badge-white,
 .alert-white {
   background: #fff;
-  color: #333;
-  border: #ccc solid 1px;
+  color: var(--primary-color);
+  border: var(--primary-color) solid 1px;
 }
 
 .small{

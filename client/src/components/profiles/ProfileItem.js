@@ -32,7 +32,7 @@ const ProfileItem = ({
 
         <h3 className='my'>{name}</h3>
         <p>{price && <span> {price} €/hour</span>}</p>
-        <Link to={`/profile/${_id}`} className='btn btn-primary my'>
+        <Link to={`/profile/${_id}`} className='btn btn-white my'>
           See Details
         </Link>
       </div>

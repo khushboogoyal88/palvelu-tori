@@ -34,7 +34,7 @@ const CreateProfile = ({ createProfile, history, auth: { user } }) => {
       <p className='lead'>
         <i className='fas fa-user' /> Welcome {user && user.name}
       </p>
-      <p className='small'>* = required field</p>
+
       <form className='form' onSubmit={(e) => onSumbit(e)}>
         <div className='form-group'>
           <div className='form-text'>
@@ -199,6 +199,8 @@ const CreateProfile = ({ createProfile, history, auth: { user } }) => {
         </div>
 
         <input type='submit' className='btn btn-primary my-1' />
+
+        <p className='small'>* = required field</p>
         <Link className='btn btn-light my-1' to='/dashboard'>
           Go Back
         </Link>
