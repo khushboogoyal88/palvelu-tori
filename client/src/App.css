@@ -246,13 +246,19 @@ img {
 }
 
 
-.btn-white,
+.btn-white{
+  background: #fff;
+  color: var(--primary-color);
+  border: var(--primary-color) solid 1px;
+}
+
+
 .bg-white,
 .badge-white,
 .alert-white {
   background: #fff;
-  color: var(--primary-color);
-  border: var(--primary-color) solid 1px;
+  color: #333;
+  border: #333 solid 1px;
 }
 
 .small{
