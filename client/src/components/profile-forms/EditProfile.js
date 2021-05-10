@@ -245,11 +245,6 @@ const EditProfile = ({
       </form>
 
       <p className='small'>* = required field</p>
-      <div className='my-2'>
-        <button className='btn btn-danger del' onClick={() => deleteAccount()}>
-          <i className='fas fa-user-minus' /> Delete My Account
-        </button>
-      </div>
     </Fragment>
   );
 };
